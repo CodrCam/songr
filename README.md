@@ -62,3 +62,11 @@ route_to_controller(request)
     elif request == "/albums":
         display_albums_page()
 ```
+
+## Time Spent on lab
+
+1.5 hours prep and reading
+
+2 hours on the build
+
+4 hours total
