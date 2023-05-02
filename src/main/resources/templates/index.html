@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Songr</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Welcome to the Songr App</h1>
+    </header>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/albums}">Albums</a>
+        <a th:href="@{/capitalize/example}">Capitalize</a>
+    </nav>
+
+    <div class="content">
+        <p>Click on the links in the navigation bar to explore the app features.</p>
+    </div>
+</div>
+</body>
+</html>
+
+
