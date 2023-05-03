@@ -207,5 +207,14 @@ Temporary Items
 **/.vscode/
 **/.settings/
 
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+.idea
+src/main/resources/application.properties
+
+
 # End of https://www.gitignore.io/api/java,macos,android,androidstudio
 **markdown-navigator.xml

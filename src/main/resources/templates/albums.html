@@ -3,17 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Albums</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Albums</h1>
-<ul>
-    <li th:each="album : ${albums}">
-        <h2 th:text="${album.title}">Album Title</h2>
-        <p>Artist: <span th:text="${album.artist}">Artist Name</span></p>
-        <p>Song Count: <span th:text="${album.songCount}">0</span></p>
-        <p>Length: <span th:text="${album.length}">0</span> seconds</p>
-        <p>Image URL: <span th:text="${album.imageUrl}">Image URL</span></p>
-    </li>
-</ul>
+<div class="container">
+    <header>
+        <h1>Albums</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/hello}">Hello</a></li>
+            <li><a th:href="@{/albums}">Albums</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2>Add a new album</h2>
+        <form th:action="@{/albums}" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+            <label for="artist">Artist:</label>
+            <input type="text" id="artist" name="artist" required>
+            <br>
+            <label for="song_count">Song Count:</label>
+            <input type="number" id="song_count" name="song_count" required>
+            <br>
+            <label for="length_in_seconds">Length (seconds):</label>
+            <input type="number" id="length_in_seconds" name="length_in_seconds" required>
+            <br>
+            <label for="image_url">Image URL:</label>
+            <input type="url" id="image_url" name="image_url" required>
+            <br>
+            <button type="submit">Add Album</button>
+        </form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Album List</h2>
+                <ul class="list-unstyled">
+                    <li th:each="album : ${albums}">
+                        <div class="media mb-4">
+                            <img th:src="${album.image_url}" alt="Album Art" width="150" height="150" class="mr-3">
+                            <div class="media-body">
+                                <h3 class="mt-0" th:text="${album.title}"></h3>
+                                <p>Artist: <span th:text="${album.artist}"></span></p>
+                                <p>Song Count: <span th:text="${album.song_count}"></span></p>
+                                <p>Length (seconds): <span th:text="${album.length_in_seconds}"></span></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
