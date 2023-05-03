@@ -2,9 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <title>Hello</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
-<h1>Hello World!</h1>
+<div class="container">
+    <header>
+        <h1>Hello</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/hello}">Hello</a></li>
+            <li><a th:href="@{/albums}">Albums</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2>Hello</h2>
+        <p>Hello there! This is a sample web application using Spring Boot, Thymeleaf, and JPA. Explore the site to see the available features.</p>
+    </div>
+</div>
 </body>
 </html>
