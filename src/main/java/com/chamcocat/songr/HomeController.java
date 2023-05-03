@@ -61,6 +61,13 @@ public class HomeController {
         return "album-details";
     }
 
+    @GetMapping("/song")
+    public String showSongs(Model model) {
+        List<Song> songs = songRepository.findAll();
+        model.addAttribute("songs", songs);
+        return "song";
+    }
+
     @PostMapping("/albums/{id}/songs")
     public String addSongToAlbum(@PathVariable Long id, @ModelAttribute Song song) {
         Album album = albumRepository.findById(id).orElse(null);
