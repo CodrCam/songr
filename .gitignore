@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Hide IntelliJ ###
+.idea
+
+### Hide App Settings
+/src/main/resources/application.properties
