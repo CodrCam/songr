@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.*;
-
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
 import java.util.List;
+
+
 
 @Entity
 @Table(name = "albums")
@@ -16,35 +18,27 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String artist;
-
-    @Column(name = "image_url")
-    private String imageUrl;
-
-    @Column(name = "length_in_seconds")
-    private int lengthInSeconds;
-
-    @Column(name = "song_count")
-    private int songCount;
-
+    private String image_url;
+    private int length_in_seconds;
+    private int song_count;
     private String title;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Song> songs;
+
+
 
     public Album() {
     }
 
-    public Album(String title, String artist, int songCount, int lengthInSeconds, String imageUrl) {
-        this.title = title;
+    public Album(String artist, String image_url, int length_in_seconds, int song_count, String title) {
         this.artist = artist;
-        this.songCount = songCount;
-        this.lengthInSeconds = lengthInSeconds;
-        this.imageUrl = imageUrl;
+        this.image_url = image_url;
+        this.length_in_seconds = length_in_seconds;
+        this.song_count = song_count;
+        this.title = title;
     }
-
-    // Getters and setters
 
     public Long getId() {
         return id;
@@ -52,14 +46,6 @@ public class Album {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getArtist() {
@@ -70,28 +56,36 @@ public class Album {
         this.artist = artist;
     }
 
-    public int getSongCount() {
-        return songCount;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setSongCount(int songCount) {
-        this.songCount = songCount;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public int getLengthInSeconds() {
-        return lengthInSeconds;
+    public int getLength_in_seconds() {
+        return length_in_seconds;
     }
 
-    public void setLengthInSeconds(int lengthInSeconds) {
-        this.lengthInSeconds = lengthInSeconds;
+    public void setLength_in_seconds(int length_in_seconds) {
+        this.length_in_seconds = length_in_seconds;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getSong_count() {
+        return song_count;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setSong_count(int song_count) {
+        this.song_count = song_count;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Song> getSongs() {
