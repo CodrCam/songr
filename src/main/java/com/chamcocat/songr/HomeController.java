@@ -68,6 +68,17 @@ public class HomeController {
         return "song";
     }
 
+    @GetMapping("/albums/{id}/songs/add")
+    public String showAddSongForm(@PathVariable Long id, Model model) {
+        Album album = albumRepository.findById(id).orElse(null);
+        if (album != null) {
+            model.addAttribute("album", album);
+            model.addAttribute("song", new Song());
+            return "add-song";
+        }
+        return "redirect:/albums";
+    }
+
     @PostMapping("/albums/{id}/songs")
     public String addSongToAlbum(@PathVariable Long id, @ModelAttribute Song song) {
         Album album = albumRepository.findById(id).orElse(null);
