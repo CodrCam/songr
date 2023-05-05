@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Album Details</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Album Details</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/hello}">Hello</a></li>
+            <li><a th:href="@{/albums}">Albums</a></li>
+            <li><a th:href="@{/song}">Songs</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 th:text="${album.artist} + ' - ' + ${album.title}"></h2>
+        <p>ID: <span th:text="${album.id}"></span></p>
+        <p>Artist: <span th:text="${album.artist}"></span></p>
+        <p>Song Count: <span th:text="${album.song_count}"></span></p>
+        <p>Length (seconds): <span th:text="${album.length_in_seconds}"></span></p>
+        <img th:src="${album.image_url}" alt="Album Art" width="150" height="150">
+
+
+        <a th:href="@{/albums/{id}/songs/add(id=${album.id})}">Add Song</a>
+    </div>
+</div>
+</body>
+</html>

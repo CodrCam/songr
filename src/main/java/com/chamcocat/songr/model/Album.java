@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import java.util.List;
+
 
 
 @Entity
@@ -19,6 +23,11 @@ public class Album {
     private int length_in_seconds;
     private int song_count;
     private String title;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Song> songs;
+
+
 
     public Album() {
     }
@@ -77,5 +86,13 @@ public class Album {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 }
