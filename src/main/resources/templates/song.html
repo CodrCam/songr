@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Capitalize</title>
+    <title>Songs</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>Capitalize</h1>
+        <h1>Songs</h1>
     </header>
 
     <nav>
@@ -20,12 +20,19 @@
         </ul>
     </nav>
 
-
     <div class="content">
-        <h2>Capitalized Text</h2>
-        <p th:text="${capitalized}"></p>
+        <h2>Song List</h2>
+        <ul>
+            <li th:each="song : ${songs}">
+                <div>
+                    <h3 th:text="${song.title}"></h3>
+                    <p>Length (seconds): <span th:text="${song.length_in_seconds}"></span></p>
+                    <p>Track Number: <span th:text="${song.track_number}"></span></p>
+                    <p>Album: <span th:text="${song.album.title}"></span></p>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
 </html>
-

@@ -17,8 +17,10 @@
             <li><a th:href="@{/}">Home</a></li>
             <li><a th:href="@{/hello}">Hello</a></li>
             <li><a th:href="@{/albums}">Albums</a></li>
+            <li><a th:href="@{/song}">Songs</a></li>
         </ul>
     </nav>
+
 
     <div class="content">
         <h2>Add a new album</h2>
@@ -49,10 +51,13 @@
                         <div class="media mb-4">
                             <img th:src="${album.image_url}" alt="Album Art" width="150" height="150" class="mr-3">
                             <div class="media-body">
-                                <h3 class="mt-0" th:text="${album.title}"></h3>
+                                <h3 class="mt-0" th:text="${album.artist} + ' - ' + ${album.title}"></h3>
+                                <p>ID: <span th:text="${album.id}"></span></p>
                                 <p>Artist: <span th:text="${album.artist}"></span></p>
                                 <p>Song Count: <span th:text="${album.song_count}"></span></p>
                                 <p>Length (seconds): <span th:text="${album.length_in_seconds}"></span></p>
+                                <!-- Add the link to the add-song page -->
+                                <a th:href="@{/albums/{id}/songs/add(id=${album.id})}">Add Song</a>
                             </div>
                         </div>
                     </li>
